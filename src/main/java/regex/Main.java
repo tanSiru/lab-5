@@ -38,9 +38,11 @@ public class Main {
      * @return whether the string satisfies the password requirements
      */
     public static boolean checkForPassword(String str, int minLength) {
+        if (str == null) return false;
         final boolean propertyOne = Pattern.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{" + minLength + ",}$", str);
         // as needed, modify this code.
         return propertyOne;
+
     }
 
     // Method 2 for checking if a string conforms to a regex: using Matcher.find
@@ -58,6 +60,7 @@ public class Main {
         final Pattern pattern = Pattern.compile("[a-zA-Z0-9._%+-]+@(mail\\.)?utoronto\\.ca");
         final Matcher matcher = pattern.matcher(str);
         final List<String> result = new ArrayList<>();
+        if (str == null) return result;
         while (matcher.find()) {
             result.add(matcher.group());
         }
@@ -76,6 +79,7 @@ public class Main {
      * @return whether str contains the same capital letter twice.
      */
     public static boolean checkForDoubles(String str) {
+        if (str == null) return false;
         return str.matches(".*([A-Z]).*\\1.*");
     }
 }
