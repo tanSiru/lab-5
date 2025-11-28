@@ -57,10 +57,10 @@ public class Main {
      * @return a list containing the email addresses in the string.
      */
     public static List<String> extractEmails(String str) {
+        if (str == null) return new ArrayList<>();
         final Pattern pattern = Pattern.compile("[a-zA-Z0-9._%+-]+@(mail\\.)?utoronto\\.ca");
         final Matcher matcher = pattern.matcher(str);
         final List<String> result = new ArrayList<>();
-        if (str == null) return result;
         while (matcher.find()) {
             result.add(matcher.group());
         }
